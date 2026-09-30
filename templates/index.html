@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>College AI Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+   
+
+            <div class="logo-area">
+                <div class="logo-circle">🎓</div>
+                <div>
+                    <h2>EduAssist</h2>
+                    <p>College AI</p>
+                </div>
+            </div>
+
+            <div class="menu">
+
+                <button>🏠 Home</button>
+
+                <button>💬 Ask Assistant</button>
+
+        
+                    <div class="dropdown">
+    <button class="dropbtn">📚 Courses </button>
+
+    <div class="dropdown-content">
+
+        <button onclick="askSuggestion('Tell me about CSE')">
+            💻 CSE
+        </button>
+
+        <button onclick="askSuggestion('Tell me about ECE')">
+            📡 ECE
+        </button>
+
+        <button onclick="askSuggestion('Tell me about EEE')">
+            ⚡ EEE
+        </button>
+
+        <button onclick="askSuggestion('Tell me about Mechanical')">
+            ⚙️ Mechanical
+        </button>
+
+        <button onclick="askSuggestion('Tell me about Civil')">
+            🏗 Civil
+        </button>
+
+        <button onclick="askSuggestion('Tell me about AI and ML')">
+            🤖 AI & ML
+        </button>
+
+        <button onclick="askSuggestion('Tell me about Data Science')">
+            📊 Data Science
+        </button>
+
+        <button onclick="askSuggestion('Tell me about MBBS')">
+            🩺 MBBS
+        </button>
+
+        <button onclick="askSuggestion('Tell me about BDS')">
+            🦷 BDS
+        </button>
+
+        <button onclick="askSuggestion('Tell me about B.Pharm')">
+            💊 B.Pharm
+        </button>
+
+        <button onclick="askSuggestion('Tell me about Nursing')">
+            👩‍⚕️ Nursing
+        </button>
+
+        <button onclick="askSuggestion('Tell me about Physiotherapy')">
+            🏃 Physiotherapy
+        </button>
+
+    </div>
+</div>
+           
+
+                <button>📝 Exams & Results</button>
+
+                <button>💰 Fees</button>
+
+              <div class="dropdown">
+
+    <button class="dropbtn">🏫 Departments </button>
+
+    <div class="dropdown-content">
+
+        <button onclick="askSuggestion('Tell me about the CSE department')">
+            💻 CSE Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the ECE department')">
+            📡 ECE Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the EEE department')">
+            ⚡ EEE Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Mechanical department')">
+            ⚙️ Mechanical Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Civil department')">
+            🏗️ Civil Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the AI and ML department')">
+            🤖 AI & ML Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Data Science department')">
+            📊 Data Science Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Medical department')">
+            🩺 Medical Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Dental department')">
+            🦷 Dental Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Pharmacy department')">
+            💊 Pharmacy Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Nursing department')">
+            👩‍⚕️ Nursing Department
+        </button>
+
+        <button onclick="askSuggestion('Tell me about the Physiotherapy department')">
+            🏃 Physiotherapy Department
+        </button>
+
+    </div>
+
+</div>
+<button class="sidebar-item">
+    📅
+    <span>Events</span>
+</button>
+<button class="sidebar-item" id="feedbackButton">
+    💬
+    <span>Feedback & Complaints</span>
+</button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <div class="top-bar">
+                <span>College Query Resolution System</span>
+
+    <div class="top-actions">
+        <select class="language-select" id="languageSelect">
+    <option value="en">🇬🇧 English</option>
+    <option value="te">🇮🇳 తెలుగు</option>
+    <option value="hi">🇮🇳 हिन्दी</option>
+</select>
+
+    <button class="theme-button" id="themeButton" title="Change theme">
+        🌙
+    </button>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        AI Online
+    </div>
+
+</div>
+            </div>
+
+
+            <section class="welcome-section">
+
+                <div class="welcome-text">
+
+                    <p class="small-title">✨ MRDU COLLEGE ASSISTANT</p>
+
+                    <h1>
+                        How can I
+                        <span>help you?</span>
+                    </h1>
+
+                    <p class="description">
+                       <p class="description">
+                          Get quick answers about MRDU courses, exams, fees,
+                          departments, scholarships, campus information and more.
+                        </p>
+                    </p>
+
+                </div>
+
+
+                <div class="assistant-character">
+
+                    <div class="character-circle">
+                        🤖
+                    </div>
+
+                    <div class="floating-star star-one">✦</div>
+                    <div class="floating-star star-two">✦</div>
+                    <div class="floating-star star-three">✧</div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Suggested Questions -->
+            <section class="suggestions">
+
+                <h3>💡 Try asking</h3>
+
+                <div class="suggestion-grid">
+
+                    <button onclick="askSuggestion('What courses are available?')">
+                        📚 What courses are available?
+                    </button>
+
+                    <button onclick="askSuggestion('When are the exams?')">
+                         📝 When are the exams?
+                    </button>
+
+                    <button onclick="askSuggestion('Where is MRDU located?')">
+                         🏫 Where is MRDU located?
+                   </button>
+                   
+                    <button onclick="askSuggestion('How can I check my results?')">
+                        📊 How can I check my results?
+                    </button>
+
+                    <button onclick="askSuggestion('What are the fees for this semester?')">
+                        💰 What are the fees for this semester?
+                    </button>
+
+                    <button onclick="askSuggestion('Tell me about the CSE department.')">
+                        🖥️ Tell me about the CSE department.
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Chat Box -->
+            <section class="chat-container">
+
+                <div class="chat-header">
+                    <div class="bot-avatar">🤖</div>
+
+                    <div>
+                        <h2>MRDU</h2>
+                        <p>Ask me your college questions</p>
+                    </div>
+                </div>
+
+
+                <div class="chat-messages">
+
+                    <div class="message bot-message">
+                        👋 Hello! I'm your College AI Assistant.
+                        How can I help you today?
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input-area">
+
+                    <input
+                        type="text"
+                        placeholder="Type your question here..."
+                    >
+                    <button class="voice-button" title="Voice input">
+                      🎙️
+                    </button>
+
+                    <button class="send-button">
+                        ➤
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+             
+    <div id="feedbackModal" class="feedback-modal">
+    <div class="feedback-box">
+        <button id="closeFeedback" class="close-feedback">✕</button>
+
+        <h2>💬 Feedback & Complaints</h2>
+        <p>We value your feedback. Please share your experience with MRDU.</p>
+
+        <input type="text" id="feedbackName" placeholder="Your Name">
+
+        <select id="feedbackCategory">
+            <option value="Feedback">Feedback</option>
+            <option value="Complaint">Complaint</option>
+        </select>
+
+        <textarea id="feedbackMessage" placeholder="Write your feedback or complaint..."></textarea>
+
+        <button id="submitFeedback" class="submit-feedback">
+            Submit
+        </button>
+
+        <p id="feedbackStatus"></p>
+    </div>
+</div>
+
+<script>
+
+const input = document.querySelector(".chat-input-area input");
+const sendButton = document.querySelector(".send-button");
+const messages = document.querySelector(".chat-messages");
+
+
+function sendMessage() {
+
+    const message = input.value.trim();
+
+    if (message === "") {
+        return;
+    }
+
+    // Show user's message
+    messages.innerHTML += `
+        <div class="message user-message">
+            ${message}
+        </div>
+    `;
+
+    input.value = "";
+
+     messages.innerHTML += `
+        <div class="message bot-message typing">
+           🤖 Thinking...
+        </div>
+`;
+    // Send message to Flask
+    fetch("/api/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+    message: message,
+    language: document.getElementById("languageSelect").value
+})
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+            const typingMessage = document.querySelector(".typing");
+
+            if (typingMessage) {
+                typingMessage.remove();
+           }
+
+             messages.innerHTML += `
+                <div class="message bot-message">
+                    ${data.reply}
+                </div>
+        `;
+
+    });
+
+}
+
+
+// Send button
+sendButton.addEventListener("click", sendMessage);
+
+
+// Press Enter
+input.addEventListener("keypress", function(event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+
+});
+function askSuggestion(question) {
+    input.value = question;
+    sendMessage();
+}
+const voiceButton = document.querySelector(".voice-button");
+
+const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-IN";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    voiceButton.addEventListener("click", function () {
+
+        recognition.start();
+
+        voiceButton.innerHTML = "🔴";
+
+    });
+
+    recognition.onresult = function (event) {
+
+        const voiceText = event.results[0][0].transcript;
+
+        input.value = voiceText;
+
+        voiceButton.innerHTML = "🎙python️";
+
+    };
+
+    recognition.onerror = function () {
+
+        voiceButton.innerHTML = "🎙️";
+
+    };
+
+    recognition.onend = function () {
+
+        voiceButton.innerHTML = "🎙️";
+
+    };
+
+} else {
+
+    voiceButton.addEventListener("click", function () {
+
+        alert("Voice input is not supported in this browser.");
+
+    });
+}
+document.addEventListener("DOMContentLoaded", function () {
+
+    const themeButton = document.getElementById("themeButton");
+
+    themeButton.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            themeButton.textContent = "☀️";
+        } else {
+            themeButton.textContent = "🌙";
+        }
+
+    });
+
+});
+const translations = {
+
+    en: {
+        collegeAI: "✨ MRDU COLLEGE ASSISTANT",
+        howHelp: 'How can I <span>help you?</span>',
+        description: "Get quick answers about MRDU courses, exams, fees, departments, scholarships, campus information and more.",
+        system: "College Query Resolution System",
+        online: "AI Online",
+        askAssistant: "💬 Ask Assistant",
+        home: "🏠 Home",
+        courses: "📚 Courses",
+        exams: "📝 Exams & Results",
+        fees: "💰 Fees",
+        departments: "🏫 Departments",
+        events: "📅 Events",
+        helplines: "📞 Helplines",
+        tryAsking: "💡 Try asking",
+        coursesQuestion: "📚 What courses are available?",
+        examsQuestion: "📝 When are the exams?",
+        locationQuestion: "🏫 Where is MRDU located?",
+        resultsQuestion: "📊 How can I check my results?",
+        feesQuestion: "💰 What are the fees for this semester?",
+        cseQuestion: "🖥️ Tell me about the CSE department.",
+        chatSubtitle: "Ask me your college questions",
+        welcomeMessage: "👋 Hello! I'm your College AI Assistant. How can I help you today?",
+        placeholder: "Type your question here..."
+    },
+
+    te: {
+        collegeAI: "✨ MRDU కాలేజ్ అసిస్టెంట్",
+        howHelp: 'నేను మీకు ఎలా <span>సహాయం చేయగలను?</span>',
+        description: "MRDU కోర్సులు, పరీక్షలు, ఫీజులు, విభాగాలు, స్కాలర్‌షిప్‌లు, క్యాంపస్ సమాచారం మరియు మరిన్ని విషయాల గురించి త్వరగా సమాధానాలు పొందండి.",
+        system: "కాలేజ్ ప్రశ్నల పరిష్కార వ్యవస్థ",
+        online: "AI ఆన్‌లైన్",
+        askAssistant: "💬 అసిస్టెంట్‌ను అడగండి",
+        home: "🏠 హోమ్",
+        courses: "📚 కోర్సులు",
+        exams: "📝 పరీక్షలు & ఫలితాలు",
+        fees: "💰 ఫీజులు",
+        departments: "🏫 విభాగాలు",
+        events: "📅 ఈవెంట్లు",
+        helplines: "📞 హెల్ప్‌లైన్లు",
+        tryAsking: "💡 ఇలా అడగండి",
+        coursesQuestion: "📚 అందుబాటులో ఉన్న కోర్సులు ఏమిటి?",
+        examsQuestion: "📝 పరీక్షలు ఎప్పుడు జరుగుతాయి?",
+        locationQuestion: "🏫 MRDU ఎక్కడ ఉంది?",
+        resultsQuestion: "📊 నా ఫలితాలను ఎలా చూడాలి?",
+        feesQuestion: "💰 ఈ సెమిస్టర్ ఫీజులు ఎంత?",
+        cseQuestion: "🖥️ CSE విభాగం గురించి చెప్పండి.",
+        chatSubtitle: "మీ కాలేజ్ ప్రశ్నలను నన్ను అడగండి",
+        welcomeMessage: "👋 నమస్కారం! నేను మీ కాలేజ్ AI అసిస్టెంట్‌ను. ఈరోజు నేను మీకు ఎలా సహాయం చేయగలను?",
+        placeholder: "మీ ప్రశ్నను ఇక్కడ టైప్ చేయండి..."
+    },
+    hi: {
+        collegeAI: "✨ MRDU कॉलेज असिस्टेंट",
+        howHelp: 'मैं आपकी कैसे <span>मदद कर सकता हूँ?</span>',
+        description: "MRDU के पाठ्यक्रमों, परीक्षाओं, फीस, विभागों, छात्रवृत्तियों, कैंपस की जानकारी और अन्य विषयों के बारे में तुरंत उत्तर प्राप्त करें।",
+        system: "कॉलेज प्रश्न समाधान प्रणाली",
+        online: "AI ऑनलाइन",
+        askAssistant: "💬 असिस्टेंट से पूछें",
+        home: "🏠 होम",
+        courses: "📚 पाठ्यक्रम",
+        exams: "📝 परीक्षाएँ और परिणाम",
+        fees: "💰 फीस",
+        departments: "🏫 विभाग",
+        events: "📅 कार्यक्रम",
+        helplines: "📞 हेल्पलाइन",
+        tryAsking: "💡 ऐसे प्रश्न पूछें",
+        coursesQuestion: "📚 कौन से पाठ्यक्रम उपलब्ध हैं?",
+        examsQuestion: "📝 परीक्षाएँ कब हैं?",
+        locationQuestion: "🏫 MRDU कहाँ स्थित है?",
+        resultsQuestion: "📊 मैं अपने परिणाम कैसे देख सकता हूँ?",
+        feesQuestion: "💰 इस सेमेस्टर की फीस कितनी है?",
+        cseQuestion: "🖥️ CSE विभाग के बारे में बताइए।",
+        chatSubtitle: "अपने कॉलेज से जुड़े प्रश्न पूछें",
+        welcomeMessage: "👋 नमस्ते! मैं आपका कॉलेज AI असिस्टेंट हूँ। मैं आज आपकी कैसे मदद कर सकता हूँ?",
+        placeholder: "अपना प्रश्न यहाँ टाइप करें..."
+    }
+};
+
+function changeLanguage(language) {
+
+    const t = translations[language];
+
+    if (!t) return;
+
+    document.querySelector(".small-title").textContent = t.collegeAI;
+
+    document.querySelector(".welcome-text h1").innerHTML = t.howHelp;
+
+    document.querySelector(".description").textContent = t.description;
+
+    document.querySelector(".top-bar > span").textContent = t.system;
+
+    document.querySelector(".status").innerHTML =
+        '<span class="status-dot"></span> ' + t.online;
+
+    document.querySelector(".chat-header p").textContent = t.chatSubtitle;
+
+    document.querySelector(".chat-input-area input").placeholder = t.placeholder;
+
+    document.querySelector(".suggestions h3").textContent = t.tryAsking;
+
+    const suggestionButtons =
+        document.querySelectorAll(".suggestion-grid button");
+
+    if (suggestionButtons.length >= 6) {
+
+        suggestionButtons[0].textContent = t.coursesQuestion;
+        suggestionButtons[1].textContent = t.examsQuestion;
+        suggestionButtons[2].textContent = t.locationQuestion;
+        suggestionButtons[3].textContent = t.resultsQuestion;
+        suggestionButtons[4].textContent = t.feesQuestion;
+        suggestionButtons[5].textContent = t.cseQuestion;
+
+    }
+
+    const menuButtons =
+        document.querySelectorAll(".menu > button");
+
+    if (menuButtons.length >= 6) {
+
+        menuButtons[0].textContent = t.home;
+        menuButtons[1].textContent = t.askAssistant;
+        menuButtons[2].textContent = t.exams;
+        menuButtons[3].textContent = t.fees;
+        menuButtons[4].textContent = t.events;
+        menuButtons[5].textContent = t.helplines;
+
+    }
+
+}
+
+document.getElementById("languageSelect").addEventListener(
+    "change",
+    function () {
+        changeLanguage(this.value);
+    }
+);
+const feedbackButton = document.getElementById("feedbackButton");
+const feedbackModal = document.getElementById("feedbackModal");
+const closeFeedback = document.getElementById("closeFeedback");
+
+feedbackButton.addEventListener("click", function () {
+    feedbackModal.style.display = "flex";
+});
+
+closeFeedback.addEventListener("click", function () {
+    feedbackModal.style.display = "none";
+});
+
+feedbackModal.addEventListener("click", function (event) {
+    if (event.target === feedbackModal) {
+        feedbackModal.style.display = "none";
+    }
+});
+</script>
+</body>
+</html>
